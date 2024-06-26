@@ -1,3 +1,11 @@
+#!/usr/bin//env python
+## This script can translate transcriptome to all possible ORFs in 3 frame by stop to stop mode.
+## Please change the sample name in line 24-26
+## "sample_name_Stop_Stop.fasta" merged same peptides and should be used as database
+## "sample_name_Stop_Stop_all.fasta" can be used to find all RNA sources of a specific peptide 
+## Author: Haomiao Su
+## Email: haomiao.su@yale.edu
+
 from genomeload import Genomeload
 from gtfline import gtf_line
 from mergeinterval import merge
