@@ -1,8 +1,8 @@
 #!/usr/bin//env python
-## This script can translate transcriptome to all possible ORFs in 3 frame by stop to stop mode.
-## Please change the sample name in line 24-26
-## "sample_name_Stop_Stop.fasta" merged same peptides and should be used as database
-## "sample_name_Stop_Stop_all.fasta" can be used to find all RNA sources of a specific peptide 
+## This script can process output file from PRICE.
+## Please change the input file name in line 34 and 40
+## Genome sequence file (line 25) and annoation files are required (line 40)
+## The output is iORF.out and TIS.out
 ## Author: Haomiao Su
 ## Email: haomiao.su@yale.edu
 
@@ -29,6 +29,7 @@ for chrom in genome:
     readlist[chrom + "-"] = readlist[chrom + "+"]
 print("Finish loading Genome")
 
+#please change the input file name
 print("Start loading TI-seq reads")
 with open("HEK293_LTM1.+.bedgraph", "r") as readfile1:
     for line in readfile1:
@@ -96,7 +97,7 @@ af.close()
 
 print("Loaded " + str(tc) + " transcripts")
 print("Start analyzing reads")
-out1, out2 = open("ateORF.out", "w"), open("TIS.out", "w")
+out1, out2 = open("iORF.out", "w"), open("TIS.out", "w")
 compatible = ["ncORF","uORF","uoORF","novel"]
 out1.write(f"Chromosome\tStrand\tPosition\tIntensity\tGene name\tObstructed by CDS in all transcripts\tRange\tStart codon\tStart codon context\tKozak\tORF max length\tAll ORF types\tpeptides sequences\n")
 out2.write(f"Chromosome\tStrand\tPosition\tIntensity\tGene name\tORF type\tRange\tStart codon\tStart codon context\tKozak\tORF max length\tAll ORF types\tpeptides sequences\n")
